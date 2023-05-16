@@ -1,0 +1,41 @@
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card bg-dark text-white" style="border-radius: 1rem;">
+            <div class="card-body p-5 text-center ">
+              <div *ngIf = "isLoading"><app-loading></app-loading></div>
+              <div class="mb-md-5 mt-md-4 pb-5">
+                <div >
+                  <form #loginform = "ngForm" (ngSubmit)="onSubmit()" *ngIf = "!isLoading">
+                    <h2 class="fw-bold mb-2 text-uppercase">{{labels.loginLbl}}</h2>
+                    <p class="text-white-50 mb-5">{{labels.enterCredentialsLbl}}</p>
+      
+                    <div class="form-outline form-white mb-4">
+                      <input type="email" name= "email" email required id="typeEmailX" placeholder="Email" class="form-control form-control-lg" #email="ngModel" [(ngModel)] = "emailid">
+                      <small class = "text-danger" [class.d-none] = "email.valid || email.untouched">{{labels.invalidEmailLbl}}</small>
+                    </div>
+      
+                    <div class="form-outline form-white mb-4">
+                      <input type="password" name = "password" id="typePasswordX" placeholder="Password"  class="form-control form-control-lg" [(ngModel)]="password"  required #pass="ngModel" minlength="8"/>
+                      <small class = "text-danger" [class.d-none] = "pass.valid || pass.untouched">{{labels.invalidPasswordLbl}}</small>
+                    </div>
+      
+                    <p class="small mb-5 pb-lg-2"><a class="text-white-50" routerLink="forgotPassword">{{labels.forgotPasswordLbl}}</a></p>
+  
+                    <button class="btn btn-outline-light btn-lg px-5" type="submit" [disabled]="loginform.form.invalid">{{labels.loginBtnLbl}}</button>
+                  </form>
+                </div>
+                
+              </div>
+              <div>
+                <p class="mb-0">{{labels.noAccountLbl}} <a routerLink="Signup" class="text-white-50 fw-bold">Sign Up</a>
+                </p>
+              </div>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
