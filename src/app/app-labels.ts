@@ -22,6 +22,20 @@ export const signupLabels={
     invalidPasswordLbl : "minimum length is 8",
 }
 
+export const forgetPasswordLabels = {
+    forgotPasswordLbl : "Forgot Password?",
+    enterEmailLbl : "enter your email here",
+    invalidEmailLbl : "please enter a valid email",
+    setNewPasswordLbl : "Set new password",
+    enterOtpAndPassword : "enter your OTP and new password here",
+    invalidPasswordLbl : "invalid password",
+    resetPasswordBtnLbl : "reset password",
+    getOtpLbl : "get OTP",
+    passsowordchangedLbl : "password changed successfully",
+    invalidOtpLbl :"invalid otp",
+    errorChangingPasswordLbl : "error in changing passwords"
+}
+
 export const authCommmonLabels = {
     status200Lbl : "200",
     invalidUsernamePasswordLbl : "Invalid username and password",

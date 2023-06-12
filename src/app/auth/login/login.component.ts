@@ -3,6 +3,7 @@ import { LoginService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
 import {loginLabels} from "src/app/app-labels";
 import { authCommmonLabels } from 'src/app/app-labels';
+import { user } from 'src/enviorments/enviorment';
 
 @Component({
   selector: 'app-login',
@@ -22,10 +23,12 @@ export class LoginComponent {
     this.isLoading = true
     this.loginService.login(this.emailid,this.password).subscribe({
       next : responseData =>{
-        if (JSON.stringify(responseData).includes(authCommmonLabels.status200Lbl)){
+        if (responseData.statusCode == authCommmonLabels.status200Lbl){
           this.isLoading = false
           console.log(responseData)
-          this.router.navigate(["/home"])
+          this.loginService.setTokens(responseData.body.AccessToken,responseData.body.IdToken, responseData.body.RefreshToken, responseData.body.ExpiresIn)
+          console.log(user.IsLoggedIn)
+          this.router.navigate(["/dashboard/home"])
         }else{
           console.log(responseData)
           alert(this.commonLabels.invalidUsernamePasswordLbl);

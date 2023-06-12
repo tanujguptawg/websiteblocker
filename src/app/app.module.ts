@@ -11,6 +11,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { HomeComponent } from './home/home.component';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +22,7 @@ import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.
     SidebarComponent,
     HomeComponent,
     ForgotPasswordComponent,
+    DashboardComponent,
     
   ],
   imports: [

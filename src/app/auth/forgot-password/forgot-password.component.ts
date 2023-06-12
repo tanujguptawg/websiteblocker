@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ForgotPasswordService } from 'src/app/services/forgot-password.service';
+import { forgetPasswordLabels } from 'src/app/app-labels';
+import { authCommmonLabels } from 'src/app/app-labels';
 
 @Component({
   selector: 'app-forgot-password',
@@ -13,6 +15,7 @@ export class ForgotPasswordComponent {
   isLoading: boolean = false
   isOTPBtnClicked: boolean = false
   OTP:string = ""
+  labels = forgetPasswordLabels
 
   constructor(private router:Router,private forgotPasswordService:ForgotPasswordService){}
 
@@ -33,17 +36,17 @@ export class ForgotPasswordComponent {
     this.isLoading = true
     this.forgotPasswordService.resetPassword(this.emailid,this.newPassword,this.OTP).subscribe({
       next : (responseData)=>{
-        console.log("password changes successfully");
-        if (JSON.stringify(responseData).includes("200")){
+        if (JSON.stringify(responseData).includes(authCommmonLabels.status200Lbl)){
           console.log(responseData)
+          alert(forgetPasswordLabels.passsowordchangedLbl)
           this.router.navigate([""])
         }else{
           console.log(responseData)
-          alert("invalid otp");
+          alert(this.labels.invalidOtpLbl);
         }
       },
       error : (error) => {
-        console.log("error in changing passwords");
+        console.log(this.labels.errorChangingPasswordLbl);
         //console.log(error);
       }
     })
